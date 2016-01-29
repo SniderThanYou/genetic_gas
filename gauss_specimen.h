@@ -8,18 +8,6 @@ static const size_t NUM_GAUSS_PARAMS = 3;
 static const std::vector<double> x = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 static const std::vector<double> y = {0, 1, 3, 9, 11, 8, 4, 2, 1, 0};
 
-double gauss(double t, double a, double b, double c) {
-  return a * std::exp(-0.5 * std::pow((t - b) / c, 2));
-}
-
-std::vector<double> gauss(const std::vector<double>& t, double a, double b, double c) {
-  std::vector<double> ret;
-  for (double x : t) {
-    ret.push_back(gauss(x, a, b, c));
-  }
-  return ret;
-}
-
 class GaussSpecimen {
 public:
   GaussSpecimen() : GaussSpecimen(random_genes()) {}
@@ -86,5 +74,17 @@ private:
     static std::default_random_engine generator;
     static std::uniform_real_distribution<double> distribution(-1e6, 1e6);
     return distribution(generator);
+  }
+
+  static double gauss(double t, double a, double b, double c) {
+    return a * std::exp(-0.5 * std::pow((t - b) / c, 2));
+  }
+
+  static std::vector<double> gauss(const std::vector<double>& t, double a, double b, double c) {
+    std::vector<double> ret;
+    for (double x : t) {
+      ret.push_back(gauss(x, a, b, c));
+    }
+    return ret;
   }
 };

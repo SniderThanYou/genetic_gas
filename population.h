@@ -20,11 +20,11 @@ public:
     std::sort(specimens.begin(), specimens.end());
   }
 
-  void print_best() const {
+  void print_best() {
     std::cout << "Best: " << specimens.front().to_s() << std::endl;
   }
 
-  bool has_ideal_specimen() const {
+  bool has_ideal_specimen() {
     return specimens.front().is_ideal();
   }
 

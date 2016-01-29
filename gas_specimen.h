@@ -18,7 +18,7 @@ public:
     }
   }
 
-  bool is_ideal() const {
+  bool is_ideal() {
     return fitness == 0;
   }
 
@@ -38,7 +38,7 @@ public:
     return this->fitness < other.fitness;
   }
 
-  std::string to_s() const {
+  std::string to_s() {
     return genes + " (" + std::to_string(fitness) + ")";
   }
 
